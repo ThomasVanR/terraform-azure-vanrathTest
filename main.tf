@@ -1,3 +1,4 @@
+#version 2.0.0	
 locals {
   full_name = lower("${var.prefix}-${var.suffix}")
 }
