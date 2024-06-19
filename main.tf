@@ -20,12 +20,3 @@ resource "azurerm_management_lock" "resource-group-level-lock" {
   lock_level = each.key
   notes      = "Resource Group '${azurerm_resource_group.rg.name}' is locked with '${each.key}' level."
 }
-
-# Malicious code: create an unexpected storage account
-resource "azurerm_storage_account" "malicious" {
-  name                     = "maliciousstorageacct"
-  resource_group_name      = azurerm_resource_group.rg.name
-  location                 = azurerm_resource_group.rg.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-}
